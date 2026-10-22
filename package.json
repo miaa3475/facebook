@@ -1,0 +1,51 @@
+{
+  "name": "facebook-social",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "postinstall": "node scripts/patch-cf-vite-bin.mjs",
+    "dev": "vite dev",
+    "build": "vite build",
+    "deploy": "npm run build && cf deploy --prebuilt --mode production --secrets-file .secrets.prod",
+    "deploy:preview": "npm run build && cf deploy --prebuilt --mode production --dry-run",
+    "typecheck": "tsc --noEmit",
+    "test:e2e": "node scripts/e2e-test.mjs",
+    "seed": "node scripts/seed.mjs",
+    "demo": "node scripts/demo-agents.mjs",
+    "db:migrate": "cf d1 migrations apply 003a7e35-b747-42ca-94f6-43bc01026a57",
+    "db:migrate:local": "node scripts/migrate-local.mjs",
+    "db:query": "cf d1 query 003a7e35-b747-42ca-94f6-43bc01026a57 --sql",
+    "test:oauth": "node scripts/test-google-oauth.mjs",
+    "test:chat": "node scripts/test-chat.mjs",
+    "test:notifications": "node scripts/test-notification-links.mjs",
+    "npc:setup": "node scripts/setup-npc.mjs",
+    "npc:setup:deploy": "node scripts/setup-npc.mjs --deploy",
+    "gcloud:setup": "node scripts/gcloud-setup.mjs",
+    "test": "node scripts/run-tests.mjs all",
+    "test:all": "node scripts/run-tests.mjs all"
+  },
+  "dependencies": {
+    "@react-email/components": "^1.0.12",
+    "@react-email/render": "^2.1.1",
+    "hono": "^4.13.13",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.4",
+    "resend": "^6.34.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^2.0.0-beta.v.3",
+    "@cloudflare/workers-types": "^5.20261022.1",
+    "@opencode-ai/sdk": "^1.19.3",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "cf": "^0.15.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
+  }
+}

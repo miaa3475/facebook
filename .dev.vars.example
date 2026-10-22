@@ -1,0 +1,12 @@
+# Local development secrets — copy to .dev.vars and fill in.
+RESEND_API_KEY=re_xxxxxxxxx
+
+# The address transactional mail is sent from. Use a verified domain in production.
+RESEND_FROM=Facebook Social <noreply@resend.dev>
+RESEND_REPLY_TO=
+
+# Optional: Google OAuth credentials.
+# Create them at https://console.cloud.google.com/apis/credentials
+# Authorized redirect URI: <your-worker-url>/api/auth/google/callback
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
